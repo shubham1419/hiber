@@ -5,14 +5,17 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 @Repository("categoryDao")
 public class CategoryDaoImpl implements CategoryDao {
-	@Autowired
+    @Autowired
 	private SessionFactory sessionFactory;
+	private static Configuration config;
 	private static List<Category> categories = new ArrayList<>();
 	/*
 	static {
@@ -47,7 +50,7 @@ public class CategoryDaoImpl implements CategoryDao {
 	@Transactional
 	public boolean add(Category category) {
 		try {
-			
+
 			Session session = sessionFactory.getCurrentSession();
 			session.save(category);
 			return true;

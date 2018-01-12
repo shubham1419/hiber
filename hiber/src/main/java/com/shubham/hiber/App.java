@@ -1,6 +1,12 @@
 package com.shubham.hiber;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 /**
  * Hello world!
@@ -8,6 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class App 
 {
+	//@Autowired
+	//private static SessionFactory sessionFactory;
 	/*@Autowired
 	CategoryDao categoryDaoBean;
 	
@@ -39,13 +47,18 @@ public class App
 	
 	public static void main(String ar[])
 	{
-		CategoryDaoNew dao2 = new CategoryDaoNew();
-		int id =3;
-		String name= "laptopp";
-		String description = "desc";
+		ApplicationContext con = new AnnotationConfigApplicationContext(HiberConfig.class);
+
+		CategoryDaoNew dao2 = (CategoryDaoNew)con.getBean(CategoryDaoNew.class);
+		
+		//CategoryDaoNew dao2 = new CategoryDaoNew();
+		int id =4;
+		String name= "lapto";
+		String description = "dghfghfghghc";
 		String image = "lap_1.png";
 		Boolean active = true;
 		Category cat = new Category(id,name,description,image,active);
+		
 		dao2.addCategory(cat);
 		//dao.addCategory(cat);
 	}

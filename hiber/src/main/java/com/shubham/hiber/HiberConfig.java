@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
  
 @Configuration
+@ComponentScan(basePackages= "com.shubham.hiber")
 @EnableTransactionManagement
 public class HiberConfig {
  
@@ -22,7 +23,7 @@ public class HiberConfig {
     @Bean
     public LocalSessionFactoryBean getSessionFactory() {
         LocalSessionFactoryBean factoryBean = new LocalSessionFactoryBean();
-        factoryBean.setConfigLocation(context.getResource("classpath:hibernate.cfg.xml"));
+        factoryBean.setConfigLocation(context.getResource("classpath:hibernatenew.cfg.xml"));
         factoryBean.setAnnotatedClasses(Category.class);
         return factoryBean;
     }
